@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tillage | 文子记事]]></title>
+  <link href="http://tillage.github.com/lists/tillage/atom.xml" rel="self"/>
+  <link href="http://tillage.github.com/"/>
+  <updated>2013-01-23T19:06:15+08:00</updated>
+  <id>http://tillage.github.com/</id>
+  <author>
+    <name><![CDATA[Leven.]]></name>
+    <email><![CDATA[Leadwand@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[second]]></title>
+    <link href="http://tillage.github.com/tillage/second/"/>
+    <updated>2013-01-17T00:01:00+08:00</updated>
+    <id>http://tillage.github.com/tillage/second</id>
+    <content type="html"><![CDATA[<p>1.14-1.17
+三天时间，夜以继日，不死不休下，终于搞定Octopress(包括age主题)。</p>
+
+<p><code>Octopress</code>
+<code>ruby</code></p>
+
+<pre><code>html
+css3
+js
+yaml
+markdown
+sass
+</code></pre>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">math</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
+class Fixnum
+  def prime?</p>
+
+<pre><code>('1' * self) !~ /^1?$|^(11+?)\1+$/
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<pre><code>``` [language] [title] [url] [link text]
+code snippet
+```         
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

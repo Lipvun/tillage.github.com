@@ -1,0 +1,12 @@
+{% capture p_url%}{{ page.url | remove: 'index.html' }}{% endcapture %}
+<ul class="main inner">
+	{% for link in site.navigation %}
+		{% assign current = nil %}
+		{% if p_url == link.url %}
+			{% assign current = 'current' %}
+		{% endif %}
+		<li>
+			<a  {%if current != nil %}class="{{current}}"{%endif%} {% if link.url == "/" %}id="index"{% endif %} href="{{ link.url }}">{{ link.text }}</a>
+		</li>
+	{% endfor %}
+</ul>

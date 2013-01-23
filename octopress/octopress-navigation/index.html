@@ -3,12 +3,24 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>文子记事</title>
+	<title>Octopress navigation - 文子记事</title>
 	<meta name="author" content="Leven.">
 
 	
-	<meta name="description" content="耕耘网络, CSS, HTML5, JAVASCRIPT, PYTHON, MYSQL,LINUX">
-	<meta name="keywords" content="耕耘网络, CSS, HTML5, JAVASCRIPT, PYTHON, MYSQL,LINUX">
+	<meta name="description" content="两种方式实现Octopress导航栏当前样式 JS
+liquid JS方式 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+$(document).ready(function() { var pathname = window.location.pathname; $(&quot;#main- &hellip;">
+	<meta name="keywords" content="octopress,navigation">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
     <meta name="google-site-verification" content="wenzi's memory">
@@ -63,10 +75,8 @@
 	
 		
 		
-			
-		
 		<li>
-			<a  class="current" id="index" href="/">主页</a>
+			<a   id="index" href="/">主页</a>
 		</li>
 	
 		
@@ -84,10 +94,8 @@
 	
 		
 		
-			
-		
 		<li>
-			<a  class="current" id="index" href="/">主页</a>
+			<a   id="index" href="/">主页</a>
 		</li>
 	
 		
@@ -115,13 +123,10 @@
 	
 	<div id="main" class="inner">
 		<div id="content"><div class="fluid">
-			
-
-
-    <article class="post">
+			<article class="post">
   <header>
     
-      <h2 class="entry-title"><a href="/octopress/octopress-navigation/">Octopress Navigation</a></h2>
+      <h2 class="entry-title">Octopress Navigation</h2>
     
     
 		<p class="meta">
@@ -146,14 +151,14 @@
 
 </span>
 			
-				<span class="comments"><a href="/octopress/octopress-navigation//index.html#disqus_thread">Comments</a></span>
+				<span class="comments"><a href="/octopress/octopress-navigation/#disqus_thread">Comments</a></span>
 			
 		</p>
     
   </header>
 
 
-  <div class="entry-content"><p>两种方式实现Octopress导航栏当前样式</p>
+<div class="entry-content"><p>两种方式实现Octopress导航栏当前样式</p>
 
 <ol>
 <li>JS</li>
@@ -266,400 +271,28 @@
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 </article>
 
-
-    <article class="post">
-  <header>
-    
-      <h2 class="entry-title"><a href="/Jekyll/jekyll-utils/">Jekyll一些函数和技巧</a></h2>
-    
-    
-		<p class="meta">
-			<span class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-19T12:07:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2013</time></span>
-			<span class="tags">
-
-
-	<a class='category' href='/lists/jekyll/'>Jekyll</a>
-
-
-</span>
-			
-				<span class="comments"><a href="/Jekyll/jekyll-utils//index.html#disqus_thread">Comments</a></span>
-			
-		</p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>循环输出 3 篇文章</p>
-
-<pre><code>for post in site.posts limit:3
-endfor
-</code></pre>
-
-<p>循环输出最近 3 篇</p>
-
-<pre><code>for post in site.posts offset:3 limit:3
-endfor
-</code></pre>
-
-<p>日期</p>
-
-<pre><code>page.date | date:"%B %b, %Y"
-</code></pre>
-
-<p>分页输出</p>
-
-<pre><code>for post in paginator.posts
-    content
-endfor
-</code></pre>
-
-<p>分页</p>
-
-<pre><code>if paginator.previous_page
-    //判断输出前一个分页
-    //"page" + paginator.previous_page
-endif
-if paginator.next_page
-    //判断输出后一个分页
-    //"page" + paginator.next_page
-endif
-for page in (1..paginator.total_pages)
-    if page == paginator.page
-        //如果是当前分页
-        //page
-    else
-        //不是的话输出其他分页链接号码
-        //"page" + page
-    endif
-endfor
-</code></pre>
-
-<p>文章页面显示前一篇文章和后一篇文章</p>
-
-<pre><code>if page.previous
-    //url:    page.previous.url
-    //title:  page.previous.title | truncatewords:5
-endif
-if page.next
-    //url:    page.next.url
-    //title:  page.next.url | truncatewords:5
-</code></pre>
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
-  
-  
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <h2 class="entry-title"><a href="/tillage/second/">Second</a></h2>
-    
-    
-		<p class="meta">
-			<span class="date">
 
 
 
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-17T00:01:00+08:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time></span>
-			<span class="tags">
-
-
-	<a class='category' href='/lists/tillage/'>tillage</a>
-
-
-</span>
-			
-				<span class="comments"><a href="/tillage/second//index.html#disqus_thread">Comments</a></span>
-			
-		</p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>1.14-1.17
-三天时间，夜以继日，不死不休下，终于搞定Octopress(包括age主题)。</p>
-
-<p><code>Octopress</code>
-<code>ruby</code></p>
-
-<pre><code>html
-css3
-js
-yaml
-markdown
-sass
-</code></pre>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">math</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Discover if a number is prime</span><a href='http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/'>Source Article</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Fixnum</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">prime?</span>
-</span><span class='line'>    <span class="p">(</span><span class="s1">&#39;1&#39;</span> <span class="o">*</span> <span class="nb">self</span><span class="p">)</span> <span class="o">!~</span> <span class="sr">/^1?$|^(11+?)\1+$/</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>``` [language] [title] [url] [link text]
-code snippet
-```         
-</code></pre>
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  
-  
-</article>
+</section>
 
-
-    <article class="post">
-  <header>
-    
-      <h2 class="entry-title"><a href="/Jekyll/jekyll-template-data/">Jekyll 主题变量</a></h2>
-    
-    
-		<p class="meta">
-			<span class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-16T20:16:00+08:00" pubdate data-updated="true">Jan 16<span>th</span>, 2013</time></span>
-			<span class="tags">
-
-
-	<a class='category' href='/lists/jekyll/'>Jekyll</a>
-
-
-</span>
-			
-				<span class="comments"><a href="/Jekyll/jekyll-template-data//index.html#disqus_thread">Comments</a></span>
-			
-		</p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Global</h2>
-
-<table>
-<thead>
-<tr>
-<th>Variable </th>
-<th> Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>site     </td>
-<td> Sitewide information + Configuration settings from _config.yml</td>
-</tr>
-<tr>
-<td>page     </td>
-<td> This is just the YAML Front Matter with 2 additions: url and content.</td>
-</tr>
-<tr>
-<td>content  </td>
-<td> In layout files, this contains the content of the subview(s). This is the variable used to insert the rendered content into the layout. This is not used in post files or page files.</td>
-</tr>
-<tr>
-<td>paginator </td>
-<td> When the paginate configuration option is set, this variable becomes available for use.</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Site</h2>
-
-<table>
-<thead>
-<tr>
-<th>Variable    </th>
-<th> Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>site.time </td>
-<td> The current Time (when you run the jekyll command).</td>
-</tr>
-<tr>
-<td>site.posts </td>
-<td> A reverse chronological list of all Posts.</td>
-</tr>
-<tr>
-<td>site.related_posts </td>
-<td> If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are low quality but fast to compute. For high quality but slow to compute results, run the jekyll command with the &#8211;lsi (latent semantic indexing) option.</td>
-</tr>
-<tr>
-<td>site.categories.CATEGORY </td>
-<td> The list of all Posts in category CATEGORY.</td>
-</tr>
-<tr>
-<td>site.tags.TAG </td>
-<td> The list of all Posts with tag TAG.</td>
-</tr>
-<tr>
-<td>site.[CONFIGURATION_DATA] </td>
-<td> As of 0.5.2, all data inside of your <em>config.yml is now available through the site variable. So for example, if you have url: http://mysite.com in your configuration file, then in your posts and pages it can be used like so: http://tillage.github.com. Jekyll does not parse a changed </em>config.yml in auto mode, you have to restart jekyll.</td>
-</tr>
-<tr>
-<td>site.pages </td>
-<td> The list of all (non-post) pages which contain YAML front matter.</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Page</h2>
-
-<table>
-<thead>
-<tr>
-<th>Variable    </th>
-<th> Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>page.content    </td>
-<td> The un-rendered content of the Page.</td>
-</tr>
-<tr>
-<td>page.title  </td>
-<td> The title of the Post.</td>
-</tr>
-<tr>
-<td>page.url    </td>
-<td> The URL of the Post without the domain. e.g. /2008/12/14/my-post.html</td>
-</tr>
-<tr>
-<td>page.date   </td>
-<td> The Date assigned to the Post. This can be overridden in a post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS</td>
-</tr>
-<tr>
-<td>page.id </td>
-<td> An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post</td>
-</tr>
-<tr>
-<td>page.categories </td>
-<td> The list of categories to which this post belongs. Categories are derived from the directory structure above the <em>posts directory. For example, a post at /work/code/</em>posts/2008-12-24-closures.textile would have this field set to [&#8216;work&#8217;, &#8216;code&#8217;]. These can also be specified in the YAML Front Matter</td>
-</tr>
-<tr>
-<td>page.tags   </td>
-<td> The list of tags to which this post belongs. These can be specified in the YAML Front Matter</td>
-</tr>
-<tr>
-<td>page.next   </td>
-<td> The chronologically newer post</td>
-</tr>
-<tr>
-<td>page.previous   </td>
-<td> The chronologically older post</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>Note: Any custom front matter that you specify will be available under page. For example, if you specify custom_css: true in a page’s front matter, that value will be available in templates as page.custom_css</p>
-
-<h2>Paginator</h2>
-
-<p><strong>note: only available in index files, can be in subdirectory /blog/index.html</strong></p>
-
-<table>
-<thead>
-<tr>
-<th>Variable    </th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>paginator.per_page  </td>
-<td> Number of posts per page.</td>
-</tr>
-<tr>
-<td>paginator.posts </td>
-<td> Posts available for that page.</td>
-</tr>
-<tr>
-<td>paginator.total_posts   </td>
-<td> Total number of posts.</td>
-</tr>
-<tr>
-<td>paginator.total_pages   </td>
-<td> Total number of pages.</td>
-</tr>
-<tr>
-<td>paginator.page  </td>
-<td> The number of the current page.</td>
-</tr>
-<tr>
-<td>paginator.previous_page </td>
-<td> The number of the previous page.</td>
-</tr>
-<tr>
-<td>paginator.next_page </td>
-<td> The number of the next page.</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-  
-  
-</article>
-
-<nav id="pagenavi">
-    
-    
-    <div class="center"><a href="/archives">Blog Archives</a></div>
-</nav>
 		</div></div>
 		<aside class="sidebar">
 			
@@ -750,7 +383,10 @@ code snippet
       var disqus_shortname = 'tillage';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tillage.github.com/octopress/octopress-navigation/';
+        var disqus_url = 'http://tillage.github.com/octopress/octopress-navigation/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

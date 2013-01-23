@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Jekyll | 文子记事]]></title>
+  <link href="http://tillage.github.com/lists/jekyll/atom.xml" rel="self"/>
+  <link href="http://tillage.github.com/"/>
+  <updated>2013-01-23T19:06:15+08:00</updated>
+  <id>http://tillage.github.com/</id>
+  <author>
+    <name><![CDATA[Leven.]]></name>
+    <email><![CDATA[Leadwand@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[jekyll一些函数和技巧]]></title>
+    <link href="http://tillage.github.com/Jekyll/jekyll-utils/"/>
+    <updated>2013-01-19T12:07:00+08:00</updated>
+    <id>http://tillage.github.com/Jekyll/jekyll-utils</id>
+    <content type="html"><![CDATA[<p>循环输出 3 篇文章</p>
+
+<pre><code>for post in site.posts limit:3
+endfor
+</code></pre>
+
+<p>循环输出最近 3 篇</p>
+
+<pre><code>for post in site.posts offset:3 limit:3
+endfor
+</code></pre>
+
+<p>日期</p>
+
+<pre><code>page.date | date:"%B %b, %Y"
+</code></pre>
+
+<p>分页输出</p>
+
+<pre><code>for post in paginator.posts
+    content
+endfor
+</code></pre>
+
+<p>分页</p>
+
+<pre><code>if paginator.previous_page
+    //判断输出前一个分页
+    //"page" + paginator.previous_page
+endif
+if paginator.next_page
+    //判断输出后一个分页
+    //"page" + paginator.next_page
+endif
+for page in (1..paginator.total_pages)
+    if page == paginator.page
+        //如果是当前分页
+        //page
+    else
+        //不是的话输出其他分页链接号码
+        //"page" + page
+    endif
+endfor
+</code></pre>
+
+<p>文章页面显示前一篇文章和后一篇文章</p>
+
+<pre><code>if page.previous
+    //url:    page.previous.url
+    //title:  page.previous.title | truncatewords:5
+endif
+if page.next
+    //url:    page.next.url
+    //title:  page.next.url | truncatewords:5
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyll 主题变量]]></title>
+    <link href="http://tillage.github.com/Jekyll/jekyll-template-data/"/>
+    <updated>2013-01-16T20:16:00+08:00</updated>
+    <id>http://tillage.github.com/Jekyll/jekyll-template-data</id>
+    <content type="html"><![CDATA[<h2>Global</h2>
+
+<table>
+<thead>
+<tr>
+<th>Variable </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>site     </td>
+<td> Sitewide information + Configuration settings from _config.yml</td>
+</tr>
+<tr>
+<td>page     </td>
+<td> This is just the YAML Front Matter with 2 additions: url and content.</td>
+</tr>
+<tr>
+<td>content  </td>
+<td> In layout files, this contains the content of the subview(s). This is the variable used to insert the rendered content into the layout. This is not used in post files or page files.</td>
+</tr>
+<tr>
+<td>paginator </td>
+<td> When the paginate configuration option is set, this variable becomes available for use.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Site</h2>
+
+<table>
+<thead>
+<tr>
+<th>Variable    </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>site.time </td>
+<td> The current Time (when you run the jekyll command).</td>
+</tr>
+<tr>
+<td>site.posts </td>
+<td> A reverse chronological list of all Posts.</td>
+</tr>
+<tr>
+<td>site.related_posts </td>
+<td> If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are low quality but fast to compute. For high quality but slow to compute results, run the jekyll command with the --lsi (latent semantic indexing) option.</td>
+</tr>
+<tr>
+<td>site.categories.CATEGORY </td>
+<td> The list of all Posts in category CATEGORY.</td>
+</tr>
+<tr>
+<td>site.tags.TAG </td>
+<td> The list of all Posts with tag TAG.</td>
+</tr>
+<tr>
+<td>site.[CONFIGURATION_DATA] </td>
+<td> As of 0.5.2, all data inside of your <em>config.yml is now available through the site variable. So for example, if you have url: http://mysite.com in your configuration file, then in your posts and pages it can be used like so: http://tillage.github.com. Jekyll does not parse a changed </em>config.yml in auto mode, you have to restart jekyll.</td>
+</tr>
+<tr>
+<td>site.pages </td>
+<td> The list of all (non-post) pages which contain YAML front matter.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Page</h2>
+
+<table>
+<thead>
+<tr>
+<th>Variable    </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page.content    </td>
+<td> The un-rendered content of the Page.</td>
+</tr>
+<tr>
+<td>page.title  </td>
+<td> The title of the Post.</td>
+</tr>
+<tr>
+<td>page.url    </td>
+<td> The URL of the Post without the domain. e.g. /2008/12/14/my-post.html</td>
+</tr>
+<tr>
+<td>page.date   </td>
+<td> The Date assigned to the Post. This can be overridden in a post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td>page.id </td>
+<td> An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post</td>
+</tr>
+<tr>
+<td>page.categories </td>
+<td> The list of categories to which this post belongs. Categories are derived from the directory structure above the <em>posts directory. For example, a post at /work/code/</em>posts/2008-12-24-closures.textile would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter</td>
+</tr>
+<tr>
+<td>page.tags   </td>
+<td> The list of tags to which this post belongs. These can be specified in the YAML Front Matter</td>
+</tr>
+<tr>
+<td>page.next   </td>
+<td> The chronologically newer post</td>
+</tr>
+<tr>
+<td>page.previous   </td>
+<td> The chronologically older post</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Note: Any custom front matter that you specify will be available under page. For example, if you specify custom_css: true in a page’s front matter, that value will be available in templates as page.custom_css</p>
+
+<h2>Paginator</h2>
+
+<p><strong>note: only available in index files, can be in subdirectory /blog/index.html</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Variable    </th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paginator.per_page  </td>
+<td> Number of posts per page.</td>
+</tr>
+<tr>
+<td>paginator.posts </td>
+<td> Posts available for that page.</td>
+</tr>
+<tr>
+<td>paginator.total_posts   </td>
+<td> Total number of posts.</td>
+</tr>
+<tr>
+<td>paginator.total_pages   </td>
+<td> Total number of pages.</td>
+</tr>
+<tr>
+<td>paginator.page  </td>
+<td> The number of the current page.</td>
+</tr>
+<tr>
+<td>paginator.previous_page </td>
+<td> The number of the previous page.</td>
+</tr>
+<tr>
+<td>paginator.next_page </td>
+<td> The number of the next page.</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+</feed>
