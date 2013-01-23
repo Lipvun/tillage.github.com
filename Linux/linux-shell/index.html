@@ -1,0 +1,467 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-CN" dir="ltr">
+<head>
+	<meta charset="UTF-8">
+	<title>神级Linux Shell 上篇 - Tillage</title>
+	<meta name="author" content="Tillage.">
+
+	
+	<meta name="description" content="SUDO运行上条命令 $ sudo !! 等同时CTRL-P按CTRL-A输入sudo + 空格 回车
+两个感叹号其实是bash的一个特性，称为事件引用符（event designators）。!!其实相当于!-1，引用前一条命令，当然也可以!-2，!-50。默认情况下bash会在~/. &hellip;">
+	<meta name="keywords" content="Linux,Shell">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+    <meta name="google-site-verification" content="Tillage's memory">
+    <!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
+
+    <meta name="Copyright" content="Copyright Tillage &copy; 2013. All Rights Reserved.">
+
+    <!-- Dublin Core Metadata : http://dublincore.org/ -->
+    <meta name="DC.title" content="Tillage">
+    <meta name="DC.subject" content="Tillage's memory">
+    <meta name="DC.creator" content="Tillage."> 
+	<link href="/atom.xml" rel="alternate" title="Tillage" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon">
+	<link href="/images/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" >
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//dynamic.duapp.com/libs/ajax/jquery/jquery-1.8.3.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="outer"><div class="inner">
+	<h1><a href="/">Tillage</a></h1>
+	<nav id="sub-nav" class="alignright">
+		<div class="social">
+			
+			
+			<a class="google" href="https://plus.google.com/leadwand@gmail.com?rel=author" title="Google+">Google+</a>
+			
+			
+			
+			<a class="github" href="https://github.com/tillage" title="GitHub">GitHub</a>
+			
+	    
+			
+			
+			
+			
+			
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+			
+		</div>
+		<form class="search" action="http://google.com/search" method="get">
+			<input class="alignright" type="text" name="q" results="0">
+			<input type="hidden" name="q" value="site:tillage.github.com">
+		</form>
+	</nav>
+</div>
+<nav id="main-nav">
+<ul class="main inner">
+	
+		
+		
+		<li>
+			<a   id="index" href="/">主页</a>
+		</li>
+	
+		
+		
+		<li>
+			<a    href="/archives/">Archives</a>
+		</li>
+	
+</ul></nav>
+<nav id="mobile-nav" class="inner">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container">
+<ul class="main inner">
+	
+		
+		
+		<li>
+			<a   id="index" href="/">主页</a>
+		</li>
+	
+		
+		
+		<li>
+			<a    href="/archives/">Archives</a>
+		</li>
+	
+</ul></div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:tillage.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="main" class="inner">
+		<div id="content"><div class="fluid">
+			<article class="post">
+  <header>
+    
+      <h2 class="entry-title">神级Linux Shell 上篇</h2>
+    
+    
+		<p class="meta">
+			<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-23T21:34:00+08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2013</time></span>
+			<span class="tags">
+
+
+	<a class='category' href='/lists/linux/'>Linux</a>
+
+
+</span>
+			
+				<span class="comments"><a href="/Linux/linux-shell/#disqus_thread">Comments</a></span>
+			
+		</p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>SUDO运行上条命令</h3>
+
+<pre><code>$ sudo !!
+</code></pre>
+
+<p>等同时<code>CTRL-P</code>按<code>CTRL-A</code>输入<code>sudo</code> + <code>空格</code> 回车
+两个感叹号其实是bash的一个特性，称为事件引用符（event designators）。!!其实相当于!-1，引用前一条命令，当然也可以!-2，!-50。默认情况下bash会在~/.bash_history文件内记录用户执行的最近500条命令，history命令可以显示这些命令。</p>
+
+<h3>以HTTP方式共享当前文件夹的文件</h3>
+
+<pre><code>$ python -m SimpleHTTPServer
+</code></pre>
+
+<p>这命令启动了Python的SimpleHTTPServer模块，考虑到Python在绝大多数的Linux发行版当中都默认安装，所以这个命令很可能是最简单的跨平台传文件的方法。命令执行后将在本机8000端口开放HTTP服务。</p>
+
+<h3>以普通用户打开的VIM当中保存一个ROOT用户文件</h3>
+
+<pre><code>:w !sudo tee %
+</code></pre>
+
+<p>命令:w!{cmd}，让vim执行一个外部命令{cmd}，然后把当前缓冲区的内容从stdin传入。tee是一个把stdin保存到文件的小工具。而%，是vim当中一个只读寄存器的名字，总保存着当前编辑文件的文件路径。</p>
+
+<h3>切换回上一个目录</h3>
+
+<pre><code>$ cd -
+</code></pre>
+
+<p>实际上cd -就是cd $OLDPWD的简写,相对地，$PWD总保存着当前目录的路径。</p>
+
+<h3>替换上一条命令中的一个短语</h3>
+
+<pre><code>$ ^foo^bar^
+</code></pre>
+
+<p>原始样式是：</p>
+
+<pre><code>!!:s/foo/bar/
+</code></pre>
+
+<p>即把上一条命令中的<code>foo</code>替换为<code>bar</code>后运行。
+或：修改命令的方法是使用fc命令（Fix Command），<code>fc -s foo=bar</code>在编辑器里面打开上一句命令。</p>
+
+<h3>快速备份一个文件</h3>
+
+<pre><code>$ cp filename{,.bak}
+</code></pre>
+
+<p>其原理就在于bash对大括号的展开操作，filename{,.bak}这一段会被展开成filename filename.bak再传给cp，于是就有了备份的命令了。</p>
+
+<h3>抓取LINUX桌面的视频</h3>
+
+<pre><code>$ ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.mpg
+</code></pre>
+
+<p>fmpeg的通常用法是，根据一堆参数，输出一个文件，输出文件通常放最后，下面解析下几个参数：</p>
+
+<ul>
+<li>-f x11grab 指定输入类型。因为x11的缓冲区不是普通的视频文件可以侦测格式，必须指定后ffmpeg才知道如何获得输入。</li>
+<li>-s wxga 设置抓取区域的大小。wxga是1366*768的标准说法，也可以换成-s 800×600的写法。</li>
+<li>-r 25 设置帧率，即每秒抓取的画面数。</li>
+<li>-i :0.0 设置输入源，本地X默认在0.0</li>
+<li>-sameq 保持跟输入流一样的图像质量，以用来后期处理。</li>
+</ul>
+
+
+<h3>用编辑器来输入命令</h3>
+
+<pre><code>command &lt;CTRL-x CTRL-e&gt;
+</code></pre>
+
+<p>在已经敲完的命令后按 <CTRL-x CTRL-e> ，会打开一个你指定的编辑器（比如vim，通过环境变量$EDITOR指定），里面就是你刚输入的命令，然后爱怎么编辑就怎么编辑吧，特别是那些参数异常复杂的程序，比如mencoder/ffmpeg，一个命令动辄3、4行的，要修改其中的参数，这个方法最合适不过了，保存退出后自动执行这个程序。实际上这是readline库的功能，在默认情况下，bash使用的是emacs模式的命令行操作方式， <CTRL-x CTRL-e>是调用这个功能的一个绑定。如果你习惯使用vi模式，按 <ESC v> 可以实现同样功能。如果你喜欢别的编辑器，可以在~/.bashrc里面放上比如export EDITOR=nano的命令。</p>
+
+<h3>清空或创建一个文件</h3>
+
+<pre><code>&gt; file.txt
+</code></pre>
+
+<blockquote><p>在shell里面是标准输出重定向符，即把（前部个命令的）命令行输出转往一个文件内，但这里没有&#8221;前部命令&#8221;，输出为空，于是就覆盖（或创建）成一个空文件了。有些脚本的写法是:>file.txt，因为:是bash默认存在的空函数。单纯创建文件也可以用$touch file.txt，touch本来是用作修改文件的时间戳，但如果文件不存在，就自动创建了。</p></blockquote>
+
+<h3>用SSH创建端口转发通道</h3>
+
+<pre><code>ssh -N -L2001:remotehost:80 user@somemachine
+</code></pre>
+
+<p>这个命令在本机打开了2001端口，对本机2001端口的请求通过somemachine作为跳板，转到remotehost的80端口上。
+实现效果跟术语反向代理是相似的，实际上就是端口转发，注意上面的描述涉及了3台主机，但当然somemachine可以变成localhost。
+这个命令比较抽象，但有时候是很有用的，比如因为众所周知的原因国内的IP的80端口无法使用，又或者公司的防火墙只给外网开了ssh端口，需要访问内部服务器一个web应用，以及需要访问某些限定了来源IP的服务，就可以用上这个方法了。
+举一个具体例子，运行：</p>
+
+<pre><code>ssh -f -N -L 0.0.0.0:443:twitter.com:443 shell.cjb.net
+ssh -f -N -L 0.0.0.0:80:twitter.com:80 shell.cjb.net
+</code></pre>
+
+<p>然后在/etc/hosts里面添加127.0.0.1 twitter.com，好吧剩下的你懂的。
+当然通常做这个功能的反向代理，应该要用squid、nginx之类，ssh就算是轻量级的尝试吧！</p>
+
+<h3>重置终端</h3>
+
+<pre><code>reset
+</code></pre>
+
+<p>如果你试过不小心cat了某个二进制文件，很可能整个终端就傻掉了，可能不会换行，没法回显，大堆乱码之类的，这时候敲入reset回车，不管命令有没有显示，就能回复正常了。
+实际上reset命令只是输出了一些特殊字符，我们看BusyBox里面最简单的reset程序的实现：</p>
+
+<pre><code>printf("\033c\033(K\033[J\033[0m\033[?25h");
+</code></pre>
+
+<p>输出的这些字符对Shell是有特殊意义的：</p>
+
+<pre><code>\033c: "ESC c" - 发送重置命令;
+\033(K: "ESC ( K" - 重载终端的字符映射;
+\033[J: "ESC [ J" - 清空终端内容;
+\033[0m: "ESC [ 0 m" - 初始化字符显示属性;
+\033[?25h: "ESC [ ? 25 h" - 让光标可见;
+</code></pre>
+
+<h3>午夜的时候执行某命令</h3>
+
+<pre><code>echo cmd | at midnight
+</code></pre>
+
+<p>说的就是at这个组件，通常跟cron相提并论，不过at主要用于定时一次性任务，而cron定时周期性任务。</p>
+
+<h3>远程传送麦克风语音</h3>
+
+<pre><code>dd if=/dev/dsp | ssh username@host dd of=/dev/dsp
+</code></pre>
+
+<p>/dev/dsp是Linux下声卡的文件映射（Digital Signal Proccessor），从其中读数据就是录音，往里面写数据就是播放，相当简单！
+dd是常用的数据拷贝程序，如果不同时指定if、of，就直接使用stdin/stdout来传输。
+如果你没有远程主机，可以试试这样：</p>
+
+<pre><code>dd if=/dev/dsp of=/dev/dsp
+</code></pre>
+
+<p>直接回放麦克风的声音，只是有一点延时。
+但是如果有别的程序正在使用声卡，这个方法就不凑效了，因为一般的声卡都不允许多个音频流同时处理，可以借用alsa组件的工具，arecord跟aplay:</p>
+
+<pre><code>arecord | ssh username@host aplay
+</code></pre>
+
+<p>本地回放就是：</p>
+
+<pre><code>arecord | aplay
+</code></pre>
+
+<p>如果你想吓吓别人：</p>
+
+<pre><code>cat /dev/urandom | ssh username@host aplay
+</code></pre>
+
+<h3>映射一个内存目录</h3>
+
+<pre><code>mount -t tmpfs -o size=1024m tmpfs /mnt/ram
+</code></pre>
+
+<p>这个命令开了一块1G内存来当目录用。不过放心，如果里面没文件，是不会占用内存的，用多少占多少。
+不过一般来说没必要手动挂载，因为多数发行版都会在fstab内预留了一个内存目录，挂载在/dev/shm，直接使用即可；最常见的用途是用内存空间来放Firefox的配置，可以让慢吞吞的FF快很多。</p>
+
+<h3>用DIFF对比远程文件跟本地文件</h3>
+
+<pre><code>ssh user@host cat /path/to/remotefile | diff /path/to/localfile -
+</code></pre>
+
+<p>diff通常的用法是从参数读入两个文件，而命令里面的-则是指从stdin读入了。</p>
+
+<h3>查看系统中占用端口的进程</h3>
+
+<pre><code>netstat -tulnp
+</code></pre>
+
+<p>Netstat是很常用的用来查看Linux网络系统的工具之一，这个参数可以背下来：</p>
+
+<ul>
+<li>-t: 显示TCP链接信息</li>
+<li>-u: 显示UDP链接信息</li>
+<li>-l: 显示监听状态的端口</li>
+<li>-n: 直接显示ip，不做名称转换</li>
+<li>-p: 显示相应的进程PID以及名称（要root权限）</li>
+</ul>
+
+
+<p>如果要查看关于sockets更详细占用信息等，可以使用lsof工具。</p>
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+		</div></div>
+		<aside class="sidebar">
+			
+				<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/Linux/linux-shell-2/">神级Linux Shell 下篇</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Linux/linux-shell/">神级Linux Shell 上篇</a>
+      </li>
+    
+      <li class="post">
+        <a href="/octopress/octopress-navigation/">Octopress navigation</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Jekyll/jekyll-utils/">jekyll一些函数和技巧</a>
+      </li>
+    
+      <li class="post">
+        <a href="/tillage/second/">second</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/tillage">@tillage</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'tillage',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/leadwand@gmail.com?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+			
+  		</aside>
+	</div>
+	<footer id="footer"><div class="inner">Copyright &copy; 2013
+
+    Tillage.
+
+</div></footer>
+	<script src="/javascripts/age.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'tillage';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tillage.github.com/Linux/linux-shell/';
+        var disqus_url = 'http://tillage.github.com/Linux/linux-shell/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>
