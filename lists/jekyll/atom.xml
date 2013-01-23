@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Jekyll | 文子记事]]></title>
+  <title><![CDATA[Category: Jekyll | Tillage]]></title>
   <link href="http://tillage.github.com/lists/jekyll/atom.xml" rel="self"/>
   <link href="http://tillage.github.com/"/>
-  <updated>2013-01-23T19:06:15+08:00</updated>
+  <updated>2013-01-23T19:12:53+08:00</updated>
   <id>http://tillage.github.com/</id>
   <author>
-    <name><![CDATA[Leven.]]></name>
+    <name><![CDATA[Tillage.]]></name>
     <email><![CDATA[Leadwand@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

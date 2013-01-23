@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
 	<channel>
-		<description><![CDATA[文子记事]]></description>
-		<title><![CDATA[文子记事]]></title>
+		<description><![CDATA[Tillage]]></description>
+		<title><![CDATA[Tillage]]></title>
 		<link>http://tillage.github.com/</link>
-		<pubDate>2013-01-23T19:06:15+08:00</pubDate>
+		<pubDate>2013-01-23T19:12:53+08:00</pubDate>
  
 		
 		<item>
@@ -131,7 +131,7 @@
 			<pubDate>2013-01-20T22:43:00+08:00</pubDate>
 			<guid isPermaLink="false">http://tillage.github.com/octopress/octopress-navigation</guid>
  
-			<source url="http://tillage.github.com/rss.xml"><![CDATA[文子记事]]></source>
+			<source url="http://tillage.github.com/rss.xml"><![CDATA[Tillage]]></source>
 		</item>
 		
 		<item>
@@ -201,7 +201,7 @@ if page.next
 			<pubDate>2013-01-19T12:07:00+08:00</pubDate>
 			<guid isPermaLink="false">http://tillage.github.com/Jekyll/jekyll-utils</guid>
  
-			<source url="http://tillage.github.com/rss.xml"><![CDATA[文子记事]]></source>
+			<source url="http://tillage.github.com/rss.xml"><![CDATA[Tillage]]></source>
 		</item>
 		
 		<item>
@@ -256,7 +256,7 @@ code snippet
 			<pubDate>2013-01-17T00:01:00+08:00</pubDate>
 			<guid isPermaLink="false">http://tillage.github.com/tillage/second</guid>
  
-			<source url="http://tillage.github.com/rss.xml"><![CDATA[文子记事]]></source>
+			<source url="http://tillage.github.com/rss.xml"><![CDATA[Tillage]]></source>
 		</item>
 		
 		<item>
@@ -438,7 +438,7 @@ code snippet
 			<pubDate>2013-01-16T20:16:00+08:00</pubDate>
 			<guid isPermaLink="false">http://tillage.github.com/Jekyll/jekyll-template-data</guid>
  
-			<source url="http://tillage.github.com/rss.xml"><![CDATA[文子记事]]></source>
+			<source url="http://tillage.github.com/rss.xml"><![CDATA[Tillage]]></source>
 		</item>
 		
 	</channel>
