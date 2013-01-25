@@ -4,7 +4,7 @@
 		<description><![CDATA[Tillage]]></description>
 		<title><![CDATA[Tillage]]></title>
 		<link>http://tillage.github.com/</link>
-		<pubDate>2013-01-23T22:53:44+08:00</pubDate>
+		<pubDate>2013-01-25T23:55:35+08:00</pubDate>
  
 		
 		<item>
@@ -345,7 +345,7 @@ Linux下的net命令是samba组件的程序，通常包含在smbclient内，可�
 <pre><code>&gt; file.txt
 </code></pre>
 
-<blockquote><p>在shell里面是标准输出重定向符，即把（前部个命令的）命令行输出转往一个文件内，但这里没有&#8221;前部命令&#8221;，输出为空，于是就覆盖（或创建）成一个空文件了。有些脚本的写法是:>file.txt，因为:是bash默认存在的空函数。单纯创建文件也可以用$touch file.txt，touch本来是用作修改文件的时间戳，但如果文件不存在，就自动创建了。</p></blockquote>
+<p><code>&gt;</code>在shell里面是标准输出重定向符，即把（前部个命令的）命令行输出转往一个文件内，但这里没有&#8221;前部命令&#8221;，输出为空，于是就覆盖（或创建）成一个空文件了。有些脚本的写法是:<code>&gt;file.txt</code>，因为:是bash默认存在的空函数。单纯创建文件也可以用<code>$touch file.txt</code>，touch本来是用作修改文件的时间戳，但如果文件不存在，就自动创建了。</p>
 
 <h3>用SSH创建端口转发通道</h3>
 
