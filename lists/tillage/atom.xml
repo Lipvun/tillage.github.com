@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tillage | Tillage]]></title>
   <link href="http://tillage.github.com/lists/tillage/atom.xml" rel="self"/>
   <link href="http://tillage.github.com/"/>
-  <updated>2013-01-28T22:44:01+08:00</updated>
+  <updated>2013-01-28T23:00:50+08:00</updated>
   <id>http://tillage.github.com/</id>
   <author>
     <name><![CDATA[Tillage.]]></name>
@@ -32,11 +32,15 @@ markdown
 sass
 </code></pre>
 
-<p>{% codeblock lang:python %}
-import sys
-import math</p>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">math</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
 class Fixnum

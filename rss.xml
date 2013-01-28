@@ -4,8 +4,394 @@
 		<description><![CDATA[Tillage]]></description>
 		<title><![CDATA[Tillage]]></title>
 		<link>http://tillage.github.com/</link>
-		<pubDate>2013-01-25T23:56:06+08:00</pubDate>
+		<pubDate>2013-01-28T23:00:50+08:00</pubDate>
  
+		
+		<item>
+			<description>
+				<![CDATA[
+				<h3>变量</h3>
+
+<p>访问变量属性有两种方式，一种是用&#8221;obj.attr&#8221;的方式，另一种是类似字典的方式：&#8221;obj[&#8216;attr&#8217;]&#8221;.
+<code>foo.bar</code>
+<code>foo['bar']</code>
+如果要在其它标签中访问变量，则不能在变量名旁边加花括号。</p>
+
+<h3>过滤器</h3>
+
+<p>变量可以在模板中被过滤器修改. 使用过滤器的方式比较类似管道（pipe）操作。如：
+<code>name|striptags|title</code></p>
+
+<p>将name变量用striptags消除变量值中的tag（用&lt;>括起来的内容），再用title过滤器将首字符 大写。
+过滤器也可以接受参数，用起来比较像调用函数</p>
+
+<p><code>list|join(', ')</code></p>
+
+<h3>检查器</h3>
+
+<p>检查器用来在Jinja的if块里面检查一个变量是否符合某种条件。用法是 varname is atest。
+检查器跟过滤器一样，也可以有参数，如果检查器只有一个参数，可以不写括号，直接用一个空格将检查器名和参数隔开.</p>
+
+<h3>注释</h3>
+
+<p>Jinja中可以加入注释，如：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{# note: disabled template because we no longer user this 
+</span><span class='line'>   
+</span><span class='line'>#} </span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h3>模板继承</h3>
+
+<p>名为&#8221;base.html&#8221;的模板:</p>
+
+<figure class='code'><figcaption><span> (base.html)</span> <a href='http://tillage.github.com/downloads/code/base.html'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    {% block head %}
+</span><span class='line'>    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;title&gt;</span>{% block title %}{% endblock %} - My Webpage<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    {% endblock %}
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>{% block content %}{% endblock %}<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        {% block footer %}
+</span><span class='line'>        <span class="ni">&amp;copy;</span> Copyright 2008 by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://domain.invalid/&quot;</span><span class="nt">&gt;</span>you<span class="nt">&lt;/a&gt;</span>.
+</span><span class='line'>        {% endblock %}
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在这个模板中有很多&#8217;block&#8217;, 这些block中间的内容，我们将会在子模板中用其它内容替换。</p>
+
+<p>名为&#8221;child.html&#8221;的模板:</p>
+
+<figure class='code'><figcaption><span> (child.html)</span> <a href='http://tillage.github.com/downloads/code/child.html'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% extends &quot;base.html&quot; %}
+</span><span class='line'>{% block title %}Index{% endblock %}
+</span><span class='line'>{% block head %}
+</span><span class='line'>    {{ super() }}
+</span><span class='line'>    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nc">.important</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="m">#336699</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="nt">&lt;/style&gt;</span>
+</span><span class='line'>{% endblock %}
+</span><span class='line'>{% block content %}
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>Index<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;important&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      Welcome on my awsome homepage.
+</span><span class='line'>    <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>{% endblock %}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你要在模板中多次打印同一个block，可以用用self变量加上block的名字.<code>self.title</code>
+如果要在子模板中重写父模板的block中打印被重写的block的内容，可以调用super关键字。<code>super()</code></p>
+
+<h3>HTML转义</h3>
+
+<p>手动转义
+这种方式需要我们使用过滤器转换我们需要转义的变量
+<code>user.username|e</code>. 这里&#8217;e&#8217;就是转义过滤器</p>
+
+<p>自动转义
+这种方式会在打印变量时自动进行转义。除非使用&#8217;safe&#8217;过滤器标明不需要转义：
+<code>user.username|safe</code></p>
+
+<h3>结构控制标记</h3>
+
+<p>Jinja中的控制标记包括：条件判断标记(if/elif/else)，循环控制(for-loop),另外还有macro（宏)和上文中提到的block。</p>
+
+<p><strong>for</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Variable    </th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loop.index  </td>
+<td>当 前迭代的索引，从1开始算</td>
+</tr>
+<tr>
+<td>loop.index0 </td>
+<td>当前迭代的索引，从0开始算</td>
+</tr>
+<tr>
+<td>loop.revindex   </td>
+<td>相 对于序列末尾的索引，从1开始算</td>
+</tr>
+<tr>
+<td>loop.revindex0  </td>
+<td>相对于序列末尾的索引，从0开始算</td>
+</tr>
+<tr>
+<td>loop.first  </td>
+<td>相 当于 loop.index == 1.</td>
+</tr>
+<tr>
+<td>loop.last   </td>
+<td>相当于 loop.index == len(seq) - 1</td>
+</tr>
+<tr>
+<td>loop.length </td>
+<td>序列的长度.</td>
+</tr>
+<tr>
+<td>loop.cycle  </td>
+<td>是 一个帮助性质的函数，可以接受两个字符串参数，如果当前循环索引是偶数，则显示第一个字符串，是奇数则显示第二个字符串。它常被在表格中用来用不同的背景 色区分相邻的行。</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>需要注意的是，Jinja的循环不支持break和continue标记。你可以对需要迭代的sequence使用过滤器来达到与break和 continue相同的目的。</p>
+
+<p>Jinja的for语句有一个和python相同的用法，那就是“else&#8217;：当无循环时显示else中的内容</p>
+
+<p><strong>if</strong></p>
+
+<p>if语句用来在Jinja中做比较判断，比较常见的用法是判断一个变量是否已定义，是否非空，是否为true</p>
+
+<p><strong>宏（Macro）</strong>
+宏的作用和函数比较类似。用来把一部分常用的代码封装起来，避免重复性的工作。
+宏可以定义在一个帮助性质的模板中，用imported的方式被其它模板引用；也可以在模板中定义并直接使用。这两种方式有个显著的不同：在模板 中定义的宏可以访问传给模板的上下文变量；在其它模板中定义的宏则只能访问到传递给它的变量，或者全局变量。
+在一个模板中你可以访问三种特殊变量：</p>
+
+<ul>
+<li>varargs 等同于python语法中的 &#8220;*args&#8221;</li>
+<li>kwargs 等同于python语法中的 &#8220;**kwargs&#8221;</li>
+<li>caller 被call标签调用的宏，调用者会被存储在一个叫做caller的变量中。</li>
+</ul>
+
+
+<p>宏其实也是一个对象，它有一些属性可以在模板中使用：</p>
+
+<ul>
+<li>name 宏的名称。</li>
+<li>arguments 宏可以接受的参数，这个属性是一个元组</li>
+<li>defaults 缺省值的元组</li>
+<li>catch_kwargs 这个宏是否可以接受关键字参数</li>
+<li>catch_varargs 这个宏是否可以接受索引位置参数</li>
+<li>caller 是否有caller变量，可以被call标签调用</li>
+</ul>
+
+
+<p><strong>Call</strong>
+在某些情况下，你可能需要将一个宏对象传递到另外一个宏中使用。为了实现此目的，你可以使用call block。</p>
+
+<p><strong>赋值</strong>
+在一个代码块内部你可以为一个变量赋值。在块（block, macro, loop)外部赋值的变量可以被从模板中导出，提供给其它模板使用。</p>
+
+<p><strong>include</strong></p>
+
+<p>用include可以导入另外一个模板到当前模板中</p>
+
+<p><strong>import</strong></p>
+
+<p>Jinja2支持将常用的代码放到宏中。这些宏可以放到不同的模板中，然后用import语句导入来使用，这有点类似python的import 功能。需要注意的是，import导入的模板会被缓存，而且导入到模板不能访问当前模板的本地变量，它只能访问全局变量。</p>
+
+<p>导入模板有两种方式，一是导入整个的模板作为一个变量，另一个方法是从一个模板中导入指定的宏或者可导出的变量</p>
+
+<h3>表达式</h3>
+
+<p>Jinja的表达式在模板中到处都是，它的语法很类似python，而且它很简单，即使不会python也可以很容易学会它。</p>
+
+<p><strong>字面值</strong>
+字面值是最简单的表达式，它其实就是一个python的对象，在Jinja中有下面几种字面值：
+字符串，数字，序列，元组，字典，bool类型。</p>
+
+<p><strong>数字计算</strong></p>
+
+<p>Jinja支持一下几种操作符：
++,-,/,//(整除），\%求余，*乘，**次方</p>
+
+<p><strong>逻辑操作</strong>
+Jinja支持一下几种逻辑操作符，它们可以放在if块中使用：
+and, or, not, ()</p>
+
+<p><strong>其它操作符</strong>
+<code>in</code>
+判断一个对象是否存在于另一个序列或者元组中</p>
+
+<p><code>1 in [1, 2, 3]</code></p>
+
+<p><code>is</code>
+执行一个检查器
+<code>|</code>
+执行一个过滤器
+<code>~</code>
+连接字符串
+<code>( )</code>
+调用函数
+<code>. / []</code>
+访问一个对象的属性</p>
+
+<p>if表达式
+Jinja支持内联表达式，在某些情况下非常有用.
+通用的语法规则是
+<code>&lt;do something&gt; if &lt;something is true&gt; else &lt;do something else&gt;</code></p>
+
+<h3>内建过滤器</h3>
+
+<ul>
+<li>abs(number) :返回数字的绝对值</li>
+<li></li>
+<li>batch(value, linecount, fill_with=None) :将一个序列以给定值分成若干片，如果给定了fill_with，则会将fill_with补充到未分配的部分。这个过滤器的用处在于，如果你要在表格中显示一个很长的序列，每行显示5个，则可以用下面的方式打印：</li>
+<li><code>for row in seq|batch(3, '&amp;nbsp;')</code></li>
+<li></li>
+<li>capitalize(s) :首字符大写</li>
+<li></li>
+<li>center(value, width=80) :生成一个长度为width的空字符串，将value放在中间</li>
+<li></li>
+<li>default(value, default_value=u, boolean=False) :如果value未定义，则显示default_value，如果value是一个bool型，需要将boolean置为true，这样当value为 false是将会打印缺省值</li>
+<li>这个过滤器的别名是d</li>
+<li></li>
+<li>dictsort(value, case_sensitive=False, by=&#8217;key&#8217;) : 字典排序，case_sensitive决定是否大小写敏感，by决定是按照key排序还是按value排序</li>
+<li></li>
+<li>escape(s) :html字符转义，别名是e</li>
+<li></li>
+<li>filesizeformat(value) :将一个大数字转换成KMG形式，如：1.3k，34g，25.3m等等</li>
+<li></li>
+<li>first(seq) : 返回序列的第一个值</li>
+<li></li>
+<li>float(value, default=0.0) :将一个值转换成浮点数，如果转换失败则返回default</li>
+<li></li>
+<li>forceescape(value) :不管value是否被转义过，一律进行html转义。</li>
+<li></li>
+<li>format(value, *args, **kwargs) :等同于python的&#8221;%s,%s&#8221; % (str1, str2)</li>
+<li></li>
+<li>groupby(value, attribute) :类似SQL的group by,可以将一个序列里的对象/字典，按照attribute分组。</li>
+<li></li>
+<li>indent(s, width=4, indentfirst=False) :将文本s中每行的首字符缩进width个字符。indentfirst表示是否缩进第一行。</li>
+<li></li>
+<li>int(value, default=0) :将value转换成整数，如果转换失败则返回default</li>
+<li></li>
+<li>join(seq, d=u”) :将序列seq中的各个值用d字符连接起来形成一个字符串。</li>
+<li></li>
+<li>last(seq) :序列的最后一个值。</li>
+<li></li>
+<li>length(object) :序列或者字典的长度 别名：count</li>
+<li></li>
+<li>list(value) :将value转换为序列，如果value是字符串，则将字符串转换为字符数组。</li>
+<li></li>
+<li>lower(s) :将字符串转换为小写</li>
+<li></li>
+<li>pprint(value, verbose=False) :debug时使用，可以打印变量的详细信息。</li>
+<li></li>
+<li>random(seq) :随机从序列中取得一个值。</li>
+<li></li>
+<li>replace(s, old, new, count=None) :将字符s中的old字符串替换为new字符串，如果给定了count，则最多替换count次。</li>
+<li></li>
+<li>reverse(value) :将一个序列反转。</li>
+<li></li>
+<li>round(value, precision=0, method=&#8217;common&#8217;) :浮点数求精。precision是小数点位数，method有common,ceil,floor三种。common是四舍五入，ceil和floor与 python的同名函数功能相同。</li>
+<li></li>
+<li>safe(value) :如果当前模板设置了html自动转义，用此过滤器可以使value不转义</li>
+<li></li>
+<li>slice(value, slices, fill_with=None) :将序列分片，用fill_with字符填充最后一组子序列长度不足的部分。</li>
+<li></li>
+<li>sort(value, reverse=False) :将序列按从小到大排序，reverse为true则按从大到小排序</li>
+<li></li>
+<li>string(object) :将一个对象转换为unicode字符串</li>
+<li></li>
+<li>striptags(value) :去掉字符串value中的html，xml标签</li>
+<li></li>
+<li>sum(sequence, start=0) :统计数值序列的和。start表示从第几项开始计算</li>
+<li></li>
+<li>title(s) :将字符串s中每个单词首字符大写</li>
+<li></li>
+<li>trim(value) :去掉字符串value中首尾的空格</li>
+<li></li>
+<li>truncate(s, length=255, killwords=False, end=&#8217;&#8230;&#8217;) :截断一个字符串为length长度，末尾补end字符。killword为false则将最后一个单词完整保留，为True则将严格按照给定的长度截断。</li>
+<li></li>
+<li>upper(s) :将字符串转换为大写</li>
+<li></li>
+<li>urlize(value, trim_url_limit=None, nofollow=False)</li>
+<li></li>
+<li>wordcount(s) :统计字符串中单词的个数</li>
+<li></li>
+<li>wordwrap(s, pos=79, hard=False) :将字符串s按照pos长度换行。如果hard为True，则强制截断单词。</li>
+<li></li>
+<li>xmlattr(d, autospace=True) :创建一个sgml/xml的属性字符串</li>
+<li></li>
+<li>autospace :自动在首部添加空格.</li>
+</ul>
+
+
+<h3>内建检查器</h3>
+
+<ul>
+<li>callable(object) :对象是否可调用</li>
+<li>defined(value) :对象是否已定义</li>
+<li>divisibleby(value, num) :value是否可以被num整除</li>
+<li>escaped(value) :是否已转义</li>
+<li>even(value) :是否为奇数</li>
+<li>iterable(value) :是否可以循环</li>
+<li>lower(value) :是否为小写</li>
+<li>none(value) :是否为None</li>
+<li>number(value) :是否为数字</li>
+<li>odd(value) :是否为偶数</li>
+<li>sameas(value, other) :value是否与other为同一个对象实例</li>
+<li>sequence(value) :是否为序列</li>
+<li>string(value) :是否是字符串</li>
+<li>undefined(value) :是否未定义</li>
+<li>upper(value) :是否为大写</li>
+</ul>
+
+
+				Included file &#8216;post/copyright.html&#8217; not found in _includes directory
+				]]>
+			</description>
+			<title><![CDATA[jinja2 template]]></title>
+			<link>http://tillage.github.com/jinja2/jinja2-template/</link>
+			<pubDate>2013-01-28T21:27:00+08:00</pubDate>
+			<guid isPermaLink="false">http://tillage.github.com/jinja2/jinja2-template</guid>
+ 
+			<source url="http://tillage.github.com/rss.xml"><![CDATA[Tillage]]></source>
+		</item>
 		
 		<item>
 			<description>
