@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Tillage]]></title>
   <link href="http://tillage.github.com/lists/octopress/atom.xml" rel="self"/>
   <link href="http://tillage.github.com/"/>
-  <updated>2013-01-25T23:56:06+08:00</updated>
+  <updated>2013-01-28T22:44:01+08:00</updated>
   <id>http://tillage.github.com/</id>
   <author>
     <name><![CDATA[Tillage.]]></name>
@@ -50,8 +50,8 @@ if ($("a.current").length == 0)
 <p>``` html</p>
 
 <ul id="main-nav">
-    <li><a id="index" href="/">Blog</a></li>
-    <li><a href="/blog/archives">Archives</a></li>
+    <li><a id="index" href="{{ root_url }}/">Blog</a></li>
+    <li><a href="{{ root_url }}/blog/archives">Archives</a></li>
 </ul>
 
 
@@ -75,39 +75,23 @@ if ($("a.current").length == 0)
 ```
 在_config.yml中加入navigation设置。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>{% capture p_url%}{{ page.url | remove: &#39;index.html&#39; }}{% endcapture %}<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main inner&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  {% for link in site.navigation %}
-</span><span class='line'>      {% assign current = nil %}
-</span><span class='line'>      {% if p_url == link.url %}
-</span><span class='line'>          {% assign current = &#39;current&#39; %}
-</span><span class='line'>      {% endif %}
-</span><span class='line'>      <span class="nt">&lt;li&gt;</span>
-</span><span class='line'>          <span class="nt">&lt;a</span>  <span class="err">{%</span><span class="na">if</span> <span class="na">current</span> <span class="err">!=</span> <span class="na">nil</span> <span class="err">%}</span><span class="na">class=</span><span class="s">&quot;{{current}}&quot;</span><span class="err">{%</span><span class="na">endif</span><span class="err">%}</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">link</span><span class="err">.</span><span class="na">url =</span><span class="s">=</span> <span class="err">&quot;/&quot;</span> <span class="err">%}</span><span class="na">id=</span><span class="s">&quot;index&quot;</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span> <span class="na">href=</span><span class="s">&quot;{{ link.url }}&quot;</span><span class="nt">&gt;</span>{{ link.text }}<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  {% endfor %}
-</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:html %}{% raw %}
+{% capture p_url%}{{ page.url | remove: 'index.html' }}{% endcapture %}</p>
+
+<ul class="main inner">
+  {% for link in site.navigation %}
+      {% assign current = nil %}
+      {% if p_url == link.url %}
+          {% assign current = 'current' %}
+      {% endif %}
+      <li>
+          <a  {%if current != nil %}class="{{current}}"{%endif%} {% if link.url == "/" %}id="index"{% endif %} href="{{ link.url }}">{{ link.text }}</a>
+      </li>
+  {% endfor %}
+</ul>
+
+
+<p>{% endraw %}{% endcodeblock %}</p>
 
 <p>修改source/_includes/custom/navigation.html,完全改变了。</p>
 
